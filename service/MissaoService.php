@@ -34,28 +34,36 @@ class MissaoService {
         return $this->tipoDao->list();
     }
 
-
+    // --- FUNÇÃO VALIDAR CORRIGIDA ---
     public function validar(Missao $missao) {
         $erros = array();
 
-        if(empty($missao->getTitulo())) {
+        // 1. Validação do Título
+        if(!$missao->getTitulo()) {
             $erros[] = "O título da missão é obrigatório.";
         }
 
-        if(empty($missao->getRecompensa())) {
+        // 2. Validação da Recompensa
+        if(!$missao->getRecompensa()) {
             $erros[] = "Informe o valor da recompensa.";
-        } else if($missao->getRecompensa() <= 0) {
-            $erros[] = "A recompensa deve ser maior que zero (ninguém trabalha de graça!).";
+        } else if($missao->getRecompensa() <= 0) { 
+            // Corrigido: Removi o "!" antes da variavel na comparação matemática
+            $erros[] = "A recompensa deve ser maior que zero.";
         }
 
-        if(empty($missao->getDificuldade())) {
+        // 3. Validação da Dificuldade
+        if(!$missao->getDificuldade()) {
             $erros[] = "Selecione a dificuldade da missão.";
         }
-        if($missao->getLocal() == null || empty($missao->getLocal()->getId())) {
+
+        // 4. Validação do Local (Objeto)
+        // Verifica se o objeto Local existe E se o ID dele não é vazio
+        if(!$missao->getLocal() || !$missao->getLocal()->getId()) {
             $erros[] = "Você deve escolher um Local para a missão.";
         }
 
-        if($missao->getTipoMissao() == null || empty($missao->getTipoMissao()->getId())) {
+        // 5. Validação do Tipo (Objeto)
+        if(!$missao->getTipoMissao() || !$missao->getTipoMissao()->getId()) {
             $erros[] = "Você deve escolher um Tipo de Missão.";
         }
 
