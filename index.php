@@ -82,10 +82,10 @@
 <body>
 
     <div class="placa-madeira">
-        <h1>🍺 Taverna do Código</h1>
-        <p>Saudações, viajante! O quadro de missões e recompensas espera por você.</p>
+        <h1>🍺 Taverna</h1>
+        <p>Saudações, viajante! O quadro de missões e <br>recompensas espera por você.</p>
         
-        <a href="missao_listar.php" class="botao-entrar">
+        <a href="view/modulos/missao_listar.php" class="botao-entrar">
             Entrar na Taverna
         </a>
     </div>

@@ -34,7 +34,6 @@ class MissaoService {
         return $this->tipoDao->list();
     }
 
-    // --- FUNÇÃO VALIDAR CORRIGIDA ---
     public function validar(Missao $missao) {
         $erros = array();
 
@@ -47,7 +46,6 @@ class MissaoService {
         if(!$missao->getRecompensa()) {
             $erros[] = "Informe o valor da recompensa.";
         } else if($missao->getRecompensa() <= 0) { 
-            // Corrigido: Removi o "!" antes da variavel na comparação matemática
             $erros[] = "A recompensa deve ser maior que zero.";
         }
 

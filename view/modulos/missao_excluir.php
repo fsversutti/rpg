@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . "/controller/MissaoController.php");
+require_once(__DIR__ . "/../../controller/MissaoController.php");
 
 if(isset($_GET['id'])) {
     $id = (int) $_GET['id'];
